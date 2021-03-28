@@ -1,0 +1,13 @@
+├── README.md           <- The top-level README for developers using this project.
+├── data
+│   └── dataset.csv     <- The final, canonical dataset for modeling.
+│
+├── docs                <- Folder to store documentation related files
+│
+├── models              <- Trained and serialized models pipelines
+│
+├── environment.yml     <- File with the conda environment definition
+├── dataset_builder.py  <- Script to query the data and to build the dataset for training
+├── eda.ipynb           <- Jupyter notebook with the model EDA
+├── train.py            <- Scripts to train the model and to save the model pipeline
+└── app.py              <- Code of the streamlit mechine learning Webapp

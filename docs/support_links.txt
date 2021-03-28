@@ -1,0 +1,14 @@
+Conda:
+https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html#managing-environments
+
+Sklearn pipeline:
+Check: # https://scikit-learn.org/stable/auto_examples/compose/plot_column_transformer_mixed_types.html
+
+Database documentation
+https://relational.fit.cvut.cz/dataset/financial
+
+Targetenconder
+https://contrib.scikit-learn.org/category_encoders/targetencoder.html
+
+Streamlit cheat sheet
+https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/master/app.py

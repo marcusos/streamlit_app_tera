@@ -1,0 +1,288 @@
+
+<!-- saved from url=(0056)https://sorry.vse.cz/~berka/challenge/pkdd1999/berka.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+
+<title>Financial Data description:</title>
+</head>
+<body bgcolor="#FFFFFF" data-new-gr-c-s-check-loaded="14.998.0" data-gr-ext-installed="" cz-shortcut-listen="true">
+<img src="./database_description_files/razitko.gif" width="170" height="162" align="LEFT" hspace="9" vspace="-10">
+
+<p>&nbsp;&nbsp;</p>
+<h1>PKDD'99 Discovery Challenge</h1>
+<h1>Guide to the Financial Data Set</h1>
+
+<p>&nbsp;&nbsp;&nbsp;</p>
+<h2>Domain</h2>
+
+<p>Once upon a time, there was a bank offering services to private
+persons. The services include managing of accounts, offering loans, etc. 
+The bank wants to improv
+their services by finding interesting groups of clients (e.g. to
+differentiate between good and bad clients). The bank managers have only
+vague idea,
+who is good client (whom to offer some additional services) and who is bad
+client (whom to watch
+carefully to minimize the bank looses). Fortunately, the bank stores data
+about their clients, the
+accounts (transactions within several months), the loans already granted,
+the credit cards issued
+ So the bank managers hope to find some answers (and questions as well) by
+analyzing this data.</p>
+
+&nbsp;
+<h2>Task description</h2>
+ 
+<p>The discovery challenge task is to</p>
+ 
+<ul>
+<li>define a problem which can help the bank to improve their services (e.g.
+define the notion of
+good or bad client, suggest  new/current service that can be offered to a
+group of clients etc.);
+from the KDD point of view the problem can be classification, prediction or
+description,</li>
+<li>show how KDD can be used to solve the problem (even if the results are
+not much significant
+from the KDD point of view, they can be important for the bank). </li></ul>
+ 
+<p> Each participant can use any KDD techniques and discover as much
+knowledge as possible. Ideally each approach will include 1. proposed goals,
+2. details of datamining, and 3. demonstrated use of the results. Since the
+results of discovery may be unexpected, the applications may be different
+from those initially proposed.</p>
+
+
+
+
+&nbsp;
+<h2>Data description</h2>
+
+<img src="./database_description_files/data.gif" align="CENTER">
+ 
+ 
+<p>The data about the clients and their accounts consist of following
+relations:</p>
+ 
+<ul>
+<li>relation<b> account</b> (4500 objects in the file ACCOUNT.ASC) - each
+record describes static characteristics of an account,
+</li><li>relation <b>client</b> (5369 objects in the file CLIENT.ASC) - each
+record describes characteristics of a client,
+</li><li>relation <b>disposition</b> (5369 objects in the file DISP.ASC) - each
+record relates together  a client with an account,
+</li><li>relation <b>permanent order</b> (6471 objects in the file ORDER.ASC) -
+each record describes characteristics of  a payment order,
+</li><li>relation <b>transaction</b> (1056320 objects in the file TRANS.ASC) -
+each record describes  one transaction on an account,
+</li><li>relation <b>loan</b> (682 objects in the file LOAN.ASC) - each record
+describes a loan granted  for a given account,
+</li><li>relation <b>credit card</b>  (892 objects in the file CARD.ASC) - each
+record describes a  credit card issued to an account,
+</li><li>relation <b>demographic data</b> (77 objects in the file DISTRICT.ASC) -
+each record describes  demographic characteristics of a district.
+</li></ul>
+ 
+<p>Each account has both static characteristics (e.g. date of creation,
+address of the branch) given
+in relation "account" and dynamic characteristics (e.g. payments debited or
+credited, balances) given
+in relations "permanent order" and "transaction". Relation "client"
+describes characteristics of
+persons who can manipulate with the accounts. One client can have more
+accounts, more clients can
+manipulate with single account; clients and accounts are related together in
+relation "disposition".
+Relations "loan" and  "credit card" describe some services which the bank
+offers to its clients;
+more credit cards can be issued to an account, at most one loan can be
+granted for an account. Relation
+"demographic data" gives some publicly available information about the
+districts (e.g. the
+unemployment rate); additional information about the clients can be deduced
+from this.</p>
+
+&nbsp;
+<h3>Relation account</h3>
+<table cellspacing="0" border="" cellpadding="4" width="85%">
+<tbody><tr><th>item</th><th>meaning</th><th>remark</th></tr>
+<tr><td>account_id</td><td>identification of the account</td><td> </td></tr>
+<tr><td>district_id</td><td>location of the branch</td><td> </td></tr>
+<tr><td>date</td><td>date of creating of the account</td><td>in the form
+YYMMDD</td></tr>
+<tr><td>frequency</td><td>frequency of issuance of statements</td>
+<td>"POPLATEK MESICNE" stands for monthly issuance<p></p>
+"POPLATEK TYDNE" stands for weekly issuance<p></p>
+"POPLATEK PO OBRATU" stands for issuance after transaction</td>
+</tr>
+</tbody></table>
+&nbsp;
+&nbsp;
+&nbsp;
+ 
+<h3>Relation client</h3>
+<font size="2"><p>
+</p></font><table cellspacing="0" border="" cellpadding="4" width="85%">
+<tbody><tr><th>item</th><th>meaning</th><th>remark</th></tr>
+<tr><td>client_id</td><td>record identifier</td><td></td></tr>
+<tr><td>birth number</td><td>identification of client</td>
+<td>the number is in the form YYMMDD for men,<br>
+the  number is in the form YYMM+50DD for women,<br>
+<p>where YYMMDD is the date of birth</p></td>
+</tr>
+<tr><td>district_id</td><td>address of the client</td><td></td></tr>
+</tbody></table><font size="2">
+&nbsp;
+&nbsp;
+&nbsp;
+ 
+<h3>Relation disposition</h3>
+<table cellspacing="0" border="" cellpadding="4" width="85%">
+<tbody><tr><th>item</th><th>meaning</th><th>remark</th></tr>
+<tr><td>disp_id</td><td>record identifier</td><td></td></tr>
+<tr><td>client_id</td><td>identification of a client</td><td></td></tr>
+<tr><td>account_id</td><td>identification of an account</td><td></td></tr>
+<tr><td>type</td><td>type of disposition (owner/user)</td>
+<td>only owner can issue permanent orders and ask for a loan</td></tr>
+</tbody></table>
+&nbsp;
+&nbsp;
+&nbsp;
+
+<h3>Relation permanent order</h3>
+<table cellspacing="0" border="" cellpadding="4" width="85%">
+<tbody><tr><th>item</th><th>meaning</th><th>remark</th></tr>
+<tr><td>order_id</td><td>record identifier</td><td></td></tr>
+<tr><td>account_id</td><td>account, the order is issued
+for</td><td></td></tr>
+<tr><td>bank_to</td><td>bank of the recipient</td>
+<td>each bank has unique two-letter code</td></tr>
+<tr><td>account_to</td><td>account of the recipient</td><td></td></tr>
+<tr><td>amount</td><td>debited amount</td><td></td></tr>
+<tr><td>K_symbol</td><td>characterization of the payment</td>
+<td>
+"POJISTNE" stands for insurrance payment<p></p>
+"SIPO" stands for household<p></p>
+"LEASING" stands for leasing<p></p>
+"UVER" stands for loan payment<p></p>
+</td>
+</tr>
+</tbody></table>
+&nbsp;
+&nbsp;
+&nbsp;
+ 
+<h3>Relation Transaction</h3>
+<font size="2"><p>
+</p></font><table cellspacing="0" border="" cellpadding="4" width="85%">
+<tbody><tr><th>item</th><th>meaning</th><th>remark</th></tr>
+<tr><td>trans_id</td><td>record identifier</td><td></td></tr>
+<tr><td>account_id</td><td>account, the transation deals
+with</td><td></td></tr>
+<tr><td>date</td><td>date of transaction</td><td>in the form
+YYMMDD</td></tr>
+<tr><td>type</td><td>+/- transaction</td>
+<td>"PRIJEM" stands for credit<p></p>"VYDAJ" stands for withdrawal</td></tr>
+<tr><td>operation</td><td>mode of  transaction</td>
+<td>
+"VYBER KARTOU" credit card withdrawal<p></p>
+"VKLAD" credit in cash<p></p>
+"PREVOD Z UCTU" collection from another bank<p></p>
+"VYBER" withdrawal in cash<p></p>
+"PREVOD NA UCET" remittance to another bank</td>
+</tr>
+<tr><td>amount</td><td>amount of money</td><td></td></tr>
+<tr><td>balance</td><td>balance after transaction</td></tr>
+<tr><td>k_symbol</td><td>characterization of the transaction</td>
+<td>
+"POJISTNE" stands for insurrance payment<p></p>
+"SLUZBY" stands for payment for statement<p></p>
+"UROK" stands for interest credited<p></p>
+"SANKC. UROK" sanction interest if negative balance<p></p>
+"SIPO" stands for household<p></p>
+<!-- 'SOC. DAVKA' stands for unemployment compensation or old-age
+pension</P> -->
+"DUCHOD" stands for old-age pension<p></p>
+<!-- 'LEASING' stands for leasing</P> -->
+"UVER" stands for loan payment<p></p>
+</td>
+</tr>
+<tr><td>bank</td><td>bank of the partner</td>
+<td>each bank has unique two-letter code</td></tr>
+<tr><td>account</td><td>account of the partner</td><td></td></tr>
+</tbody></table><font size="2">
+&nbsp;
+&nbsp;
+&nbsp;
+ 
+<h3>Relation Loan</h3>
+<table cellspacing="0" border="" cellpadding="4" width="85%">
+<tbody><tr><th>item</th><th>meaning</th><th>remark</th></tr>
+<tr><td>loan_id</td><td>record identifier</td><td></td></tr>
+<tr><td>account_id</td><td>identification of the account</td><td></td></tr>
+<tr><td>date</td><td>date when the loan was granted</td><td> in the form
+YYMMDD </td></tr>
+<!-- <TR><TD>purpose</TD><TD>purpose of the loan</TD><TD></TD></TR> -->
+<tr><td>amount</td><td>amount of money</td><td></td></tr>
+<tr><td>duration</td><td>duration of the loan</td><td></td></tr>
+<tr><td>payments</td><td>monthly payments</td><td></td></tr>
+<tr><td>status</td><td>status of paying off the loan</td>
+<td>'A' stands for contract finished, no problems,<p></p>
+'B' stands for contract finished, loan not payed,<p></p>
+'C' stands for running contract, OK so far,<p></p>
+'D' stands for running contract, client in debt</td>
+<!-- <TD> possible values are "A", "B", "C", "D"</TD> -->
+</tr>
+</tbody></table>
+&nbsp;
+&nbsp;
+&nbsp;
+
+<h3>Relation Credit card</h3>
+<table cellspacing="0" border="" cellpadding="4" width="85%">
+<tbody><tr><th>item</th><th>meaning</th><th>remark</th></tr>
+<tr><td>card_id</td><td>record identifier</td><td></td></tr>
+<tr><td>disp_id</td><td>disposition to an account</td><td></td></tr>
+<tr><td>type</td><td>type of card</td>
+<td>possible values are "junior", "classic", "gold"</td></tr>
+<tr><td>issued</td><td>issue date</td><td>in the form YYMMDD</td></tr>
+<!-- <TR><TD>expire</TD><TD>expiration date</TD><TD></TD></TR> -->
+</tbody></table>
+&nbsp;
+&nbsp;
+&nbsp;
+
+<h3>Relation Demographic data</h3>
+<table cellspacing="0" border="" cellpadding="4" width="85%">
+<tbody><tr><th>item</th>
+<th>meaning</th>
+<th>remark</th>
+</tr>
+<tr><td>A1 = district_id</td><td>district code</td><td></td></tr>
+<tr><td>A2</td><td>district name</td><td></td></tr>
+<tr><td>A3</td><td>region</td><td></td></tr>
+<tr><td>A4</td><td>no. of inhabitants</td><td></td></tr>
+<tr><td>A5</td><td>no. of municipalities with inhabitants &lt;
+499</td><td></td></tr>
+<tr><td>A6</td><td>no. of municipalities with inhabitants
+500-1999</td><td></td></tr>
+<tr><td>A7</td><td>no. of municipalities with inhabitants
+2000-9999</td><td></td></tr>
+<tr><td>A8</td><td>no. of municipalities with inhabitants
+&gt;10000</td><td></td></tr>
+<tr><td>A9</td><td>no. of cities</td><td></td></tr>
+<tr><td>A10</td><td>ratio of urban inhabitants</td><td></td></tr>
+<tr><td>A11</td><td>average salary</td><td></td></tr>
+<tr><td>A12</td><td>unemploymant rate '95</td><td></td></tr>
+<tr><td>A13</td><td>unemploymant rate '96</td><td></td></tr>
+<tr><td>A14</td><td>no. of enterpreneurs per 1000
+inhabitants</td><td></td></tr>
+<tr><td>A15</td><td>no. of commited crimes '95</td><td></td></tr>
+<tr><td>A16</td><td>no. of commited crimes '96</td><td></td></tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+<h4>This database was prepared by Petr Berka and Marta Sochorova</h4>
+
+
+
+</font></font></body></html>

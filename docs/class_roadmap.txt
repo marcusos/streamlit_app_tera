@@ -1,0 +1,21 @@
+- Explain the context, and the final output
+
+- Explain the app archacteucre
+    - offline traning fase
+    - online APP inference
+    
+- Explain project structure
+    - Explain conda env
+    - Explain dataset builder
+    - Show simple EDA
+    - Explain train script
+    - Explain model pipeline
+    - Explain joblib
+    
+- Explain streamlit
+    - Streamlit interface
+    - Streamlit model service
+    - Streamlit inference
+    
+    
+    
