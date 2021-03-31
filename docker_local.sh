@@ -7,7 +7,7 @@ docker build -t streamlit-tera .
 docker images
 
 # Removendo uma imagem já criada
-docker rmi --f streamlit-tera
+docker rmi streamlit-tera --force
 
 # Rodando a imagem streamlit-tera  e gerando um container na porta 8501
 docker run -p 8501:8501 -it streamlit-tera 
